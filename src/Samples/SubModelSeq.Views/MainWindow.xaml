@@ -9,36 +9,26 @@
         Height="800"
         Width="1100"
         WindowStartupLocation="CenterScreen"
-        mc:Ignorable="d"
-        d:DataContext="{x:Static vm:Program.mainDesignVm}">
-  <Grid Margin="0,20,0,10">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-      <Button Command="{Binding AddCounter}" Content="Add counter" Width="150" Margin="10,0,10,20" />
-      <Button Command="{Binding ToggleGlobalState}" Content="Toggle global state" Width="150" Margin="10,0,10,20" />
-    </StackPanel>
-    <TreeView Grid.Row="1" ItemsSource="{Binding Counters}">
-      <TreeView.ItemContainerStyle>
-        <Style TargetType="{x:Type TreeViewItem}">
-          <Setter Property="IsExpanded" Value="True"/>
-        </Style>
-      </TreeView.ItemContainerStyle>
-      <TreeView.ItemTemplate>
-        <HierarchicalDataTemplate ItemsSource="{Binding ChildCounters}">
-          <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding CounterIdText}" Width="250" Margin="10,5,10,5" />
-            <local:Counter/>
-            <Button Command="{Binding AddChild}" Content="Add child" Margin="0,5,10,5" />
-            <Button Command="{Binding Remove}" Content="×" Margin="0,5,10,5" Width="20" />
-            <Button Command="{Binding MoveUp}" Content="↑" Margin="0,5,10,5" Width="20" />
-            <Button Command="{Binding MoveDown}" Content="↓" Margin="0,5,10,5" Width="20"/>
-            <TextBlock Text="{Binding GlobalState, StringFormat='Global state: {0}'}" Margin="10,5,10,5" />
-          </StackPanel>
-        </HierarchicalDataTemplate>
-      </TreeView.ItemTemplate>
-    </TreeView>
-  </Grid>
+        mc:Ignorable="d">
+<Grid>
+  <StackPanel HorizontalAlignment="Center" Width="142">
+    <Button Command="{Binding GetAll}" Height="18" Content="GetAll"/>
+    <TextBox Text="{Binding IsGettingTransactions}"></TextBox>
+  </StackPanel>
+  <DataGrid ItemsSource="{Binding Transactions}" Height="253" >
+    <DataGrid.Columns>
+      <DataGridTextColumn Binding="{Binding Posto}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding Data}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding Matricula}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding Litros}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding TipoCombustivel}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding Kms}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding NumeroFatura}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding NumeroRecibo}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding ValorUnitFinal}"></DataGridTextColumn>
+      <DataGridTextColumn Binding="{Binding Total}"></DataGridTextColumn>
+    </DataGrid.Columns>
+
+  </DataGrid>
+</Grid>
 </Window>
