@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Elmish.WPF.Samples.SubModelSeq"
         xmlns:vm="clr-namespace:Elmish.WPF.Samples.SubModelSeq;assembly=SubModelSeq"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="SubModelSeq"
         Height="800"
         Width="1100"
@@ -12,8 +13,10 @@
         mc:Ignorable="d">
 <Grid>
   <StackPanel HorizontalAlignment="Center" Width="142">
-    <Button Command="{Binding GetAll}" Height="18" Content="GetAll"/>
-    <TextBox Text="{Binding IsGettingTransactions}"></TextBox>
+      <xctk:BusyIndicator IsBusy="{Binding IsGettingTransactions}" >
+    </xctk:BusyIndicator>
+      <Button Command="{Binding GetAll}" Height="18" Content="GetAll"/>
+    <!--<TextBox Text="{Binding IsGettingTransactions}"></TextBox>-->
   </StackPanel>
   <DataGrid ItemsSource="{Binding Transactions}" Height="253" >
     <DataGrid.Columns>
